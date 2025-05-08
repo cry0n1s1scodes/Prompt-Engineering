@@ -34,7 +34,7 @@
 
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/USERNAME/prompt-engineering.git
+   git clone https://github.com/cry0n1s1scodes/prompt-engineering.git
    cd prompt-engineering
 ````
 
