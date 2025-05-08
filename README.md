@@ -1,2 +1,2 @@
 # Prompt-Engineering
-The ultimate guide for the best AI prompts. A full collection on good prompts.
+Prompt Engineering is the definitive guide to crafting top-tier AI prompts. It offers a comprehensive collection of proven examples.
