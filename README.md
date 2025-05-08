@@ -36,7 +36,6 @@
    ```bash
    git clone https://github.com/cry0n1s1scodes/prompt-engineering.git
    cd prompt-engineering
-````
 
 2. **Install dependencies** (if applicable)
 
