@@ -36,6 +36,16 @@
    ```bash
    git clone https://github.com/cry0n1s1scodes/prompt-engineering.git
    cd prompt-engineering
+   ```
+
+## Alternative Option for Cloning!
+Open this URL in your browser!
+https://github.com/cry0n1s1scodes/Prompt-Engineering/blob/main/Forking/Clone%20Tools/clone.bat
+OR
+Copy and paste this into any browser!
+```
+https://github.com/cry0n1s1scodes/Prompt-Engineering/blob/main/Forking/Clone%20Tools/clone.bat
+```
 
 2. **Install dependencies** (if applicable)
 
