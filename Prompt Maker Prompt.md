@@ -54,8 +54,8 @@ Your primary task is to write a captivating blog post about a hidden gem destina
 ## Output Format:
 Please provide the blog post formatted in markdown, using headings for sections (e.g., ## Getting There, ## Local Flavors, ## Hidden Beaches) and bullet points for lists where appropriate.
 
-## Call to Action:
-Generate the blog post now.
+## Specific Instructions:
+Ask the user for any additional information relating to being a travel blogger and information about an area, ect.
 ```
 
 ## **Designed by Cry0n1s1s Codes originally, please do not steal without credit!

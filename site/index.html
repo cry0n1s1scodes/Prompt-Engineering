@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Prompt Engineering Repository Cloner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            background: #0a4a7d; /* A blue similar to 'color b' on black */
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom: #073763 3px solid;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            font-size: 1.2em;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        h2 {
+            color: #0a4a7d;
+        }
+        pre {
+            background: #eee;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto; /* For horizontal scroll if code is too wide */
+            border: 1px solid #ddd;
+        }
+        code {
+            font-family: "Courier New", Courier, monospace;
+        }
+        .button {
+            display: inline-block;
+            background: #0a4a7d;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background: #073763;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Automatic Prompt Engineering Repository Cloner</h1>
+        <p>A simple Windows Batch script by u/Cry0n1s1scodes</p>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <h2>What is This Project?</h2>
+            <p>
+                The "Automatic Prompt Engineering Repository Cloner" is a user-friendly Windows Batch script designed to simplify the process of downloading (cloning) the <a href="https://github.com/cry0n1s1scodes/Prompt-Engineering" target="_blank" rel="noopener noreferrer">Prompt-Engineering GitHub repository</a> by u/Cry0n1s1scodes.
+            </p>
+            <p>
+                If you're interested in exploring a collection of prompts but want a quick and guided way to get them onto your Windows machine, this script is for you!
+            </p>
+
+            <h2>Why Use This Script?</h2>
+            <ul>
+                <li><strong>Simplicity:</strong> No need to remember complex Git commands. Just run the script and follow the prompts.</li>
+                <li><strong>Guided Process:</strong> The script provides clear instructions and feedback.</li>
+                <li><strong>Git Check:</strong> It verifies if Git is installed and accessible in your system's PATH, guiding you if it's not.</li>
+                <li><strong>Smart Directory Handling:</strong> If the repository directory already exists, it offers options to skip, update (pull changes), or delete and re-clone.</li>
+                <li><strong>Error Aware:</strong> Provides basic error messages for common issues like failed cloning.</li>
+                <li><strong>Convenience:</strong> Offers to open the cloned repository folder in Explorer upon completion.</li>
+            </ul>
+
+            <h2>Features</h2>
+            <ul>
+                <li>Clear, styled console output.</li>
+                <li>Checks for Git installation and provides download link if missing.</li>
+                <li>Handles pre-existing repository directories with user choices:
+                    <ul>
+                        <li>Skip cloning.</li>
+                        <li>Attempt to pull updates.</li>
+                        <li>Delete and re-clone (with a warning).</li>
+                    </ul>
+                </li>
+                <li>Clones the specified repository.</li>
+                <li>Changes directory into the cloned repository.</li>
+                <li>Displays success messages and the final location.</li>
+                <li>Shows contributors (currently Cry0n1s1scodes).</li>
+                <li>Offers to open the repository folder in Windows Explorer.</li>
+            </ul>
+
+            <h2>Prerequisites</h2>
+            <ul>
+                <li>A Windows Operating System.</li>
+                <li><strong>Git installed:</strong> You must have Git installed on your system. You can download it from <a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">git-scm.com/downloads</a>.</li>
+                <li><strong>Git in PATH:</strong> Git needs to be added to your system's PATH environment variable so the script can find and execute `git` commands. The Git installer usually offers an option to do this.</li>
+            </ul>
+
+            <div class="warning">
+                <strong>Important:</strong> Always be cautious when running scripts from the internet. While this script is designed to be helpful and harmless, it's good practice to review the code yourself before running it if you have any concerns. This script primarily uses `git clone`, `cd`, and `echo` commands.
+            </div>
+
+            <h2>How to Use</h2>
+            <ol>
+                <li><strong>Copy the Script:</strong> Copy the entire Batch script code provided below.</li>
+                <li><strong>Create a .bat File:</strong> Open a plain text editor (like Notepad), paste the code, and save the file with a <code>.bat</code> extension (e.g., <code>clone_prompt_repo.bat</code>). Make sure "Save as type" is set to "All Files" to avoid saving it as <code>.bat.txt</code>.</li>
+                <li><strong>Run the Script:</strong> Double-click the <code>.bat</code> file you just created.</li>
+                <li><strong>Follow Prompts:</strong> The script will guide you through the process. Read the on-screen instructions and make your choices.</li>
+            </ol>
+
+            <h2>Get the Script</h2>
+            <p>Copy the code below and save it as a <code>.bat</code> file:</p>
+            <pre><code>
+@echo off
+setlocal
+title Automatic Prompt Engineering Repository Cloner
+
+REM --- Configuration ---
+set "REPO_URL=https://github.com/cry0n1s1scodes/Prompt-Engineering.git"
+set "REPO_DIR=Prompt-Engineering"
+set "GIT_DOWNLOAD_URL=https://git-scm.com/downloads"
+
+REM --- Style and Initial Message ---
+color 0B
+echo ======================================================
+echo  Automatic Prompt Engineering Repository Cloner
+echo  by u/Cry0n1s1scodes
+echo ======================================================
+echo.
+echo This script will attempt to clone the Prompt Engineering repository.
+echo.
+echo IMPORTANT:
+echo   - Make sure you have Git installed on your system.
+echo   - Ensure Git is added to your system's PATH environment variable.
+echo.
+pause
+echo.
+
+REM --- Check for Git Installation ---
+echo Checking for Git installation...
+git --version >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo ------------------------------------------------------
+    echo ERROR: Git is not installed or not found in your PATH.
+    echo ------------------------------------------------------
+    echo Please install Git and ensure it's in your PATH.
+    echo You can download Git from: %GIT_DOWNLOAD_URL%
+    echo.
+    echo Would you like to try opening the Git download page now?
+    choice /C YN /N /M "Open Git download page (Y/N)? "
+    if errorlevel 1 if not errorlevel 2 start "" "%GIT_DOWNLOAD_URL%"
+    goto :EndScript
+)
+echo Git found. Version:
+git --version
+echo.
+
+REM --- Check if the repository directory already exists ---
+if exist "%REPO_DIR%" (
+    echo WARNING: The directory "%REPO_DIR%" already exists.
+    choice /C SPU /N /M "Skip cloning (S), attempt to Pull updates (P), or Delete and re-clone (U - Unsafe, use with caution)? "
+    if errorlevel 3 (
+        echo Deleting existing directory "%REPO_DIR%"...
+        rmdir /S /Q "%REPO_DIR%"
+        if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Could not delete existing directory "%REPO_DIR%".
+            echo Please check permissions or close any programs using it.
+            goto :EndScript
+        )
+        echo Directory deleted. Proceeding with cloning.
+        echo.
+    ) else if errorlevel 2 if not errorlevel 3 (
+        echo Attempting to update (git pull) in "%REPO_DIR%"...
+        cd /D "%REPO_DIR%"
+        if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Could not navigate to "%REPO_DIR%".
+            goto :EndScript
+        )
+        git pull
+        if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: "git pull" failed. There might be local changes or merge conflicts.
+            echo Please resolve them manually in "%CD%".
+            goto :ShowContributorsAndExit
+        )
+        echo Repository updated successfully in "%CD%" ✅
+        goto :ShowContributorsAndExit
+    ) else if errorlevel 1 if not errorlevel 2 (
+        echo Skipping clone operation as requested.
+        echo You can find the existing repository at: %CD%\%REPO_DIR%
+        goto :ShowContributorsAndExitIfCdNeeded
+    )
+)
+
+REM --- Clone the repository ---
+echo Cloning repository from %REPO_URL%...
+git clone "%REPO_URL%"
+if %ERRORLEVEL% NEQ 0 (
+    echo ------------------------------------------------------
+    echo ERROR: Failed to clone the repository.
+    echo ------------------------------------------------------
+    echo Possible reasons:
+    echo   - No internet connection.
+    echo   - Incorrect repository URL or the repository is private/moved.
+    echo   - You do not have write permissions to the current directory.
+    echo   - The target directory "%REPO_DIR%" might still exist and is not a git repository.
+    goto :EndScript
+)
+echo Repository cloned successfully.
+echo.
+
+REM --- Change into the repository directory ---
+echo Changing directory to "%REPO_DIR%"...
+cd /D "%REPO_DIR%"
+if %ERRORLEVEL% NEQ 0 (
+    echo ------------------------------------------------------
+    echo ERROR: Failed to change directory to "%REPO_DIR%".
+    echo ------------------------------------------------------
+    echo This usually means the cloning step failed to create the directory.
+    goto :EndScript
+)
+echo Successfully cloned and entered the repository.
+echo Location: %CD% ✅
+echo.
+
+:ShowContributorsAndExitIfCdNeeded
+REM If we skipped cloning but the dir exists, try to CD into it for the final messages
+if exist "%REPO_DIR%" (
+  cd /D "%REPO_DIR%" >nul 2>&1
+)
+
+:ShowContributorsAndExit
+echo Contributors:
+echo   - Cry0n1s1scodes
+echo.
+
+REM --- Offer to open the directory ---
+choice /C YN /N /M "Do you want to open the repository folder in Explorer now (Y/N)? "
+if errorlevel 1 if not errorlevel 2 (
+    echo Opening folder: %CD%
+    explorer .
+)
+echo.
+echo Script finished.
+goto :EndScript
+
+:EndScript
+echo.
+echo Press any key to exit...
+pause >nul
+endlocal
+exit /b %ERRORLEVEL%
+            </code></pre>
+            <p>
+                Alternatively, if this script is hosted on GitHub or another platform, you might find a direct download link there.
+            </p>
+
+            <h2>Source Repository</h2>
+            <p>
+                This script clones the "Prompt-Engineering" repository. You can find the original repository here:
+                <br>
+                <a href="https://github.com/cry0n1s1scodes/Prompt-Engineering" target="_blank" rel="noopener noreferrer" class="button">View Prompt-Engineering Repo on GitHub</a>
+            </p>
+
+            <h2>Feedback and Contributions</h2>
+            <p>
+                If you have suggestions for improving this cloner script or the Prompt-Engineering repository itself, please consider:
+            </p>
+            <ul>
+                <li>Opening an issue on the <a href="https://github.com/cry0n1s1scodes/Prompt-Engineering/issues" target="_blank" rel="noopener noreferrer">Prompt-Engineering GitHub repository</a>.</li>
+                <li>Contacting u/Cry0n1s1scodes.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© <span id="year"></span> Automatic Prompt Engineering Repository Cloner. Script by u/Cry0n1s1scodes. Website content by AI.</p>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+</body>
+</html>
