@@ -47,12 +47,12 @@ Copy and paste this into any browser!
 https://github.com/cry0n1s1scodes/Prompt-Engineering/blob/main/Forking/Clone%20Tools/clone.bat
 ```
 
-2. **Install dependencies** (if applicable)
-
-   ```bash
-   # e.g. for a Python helper script
-   pip install -r requirements.txt
-   ```
+2. **Install dependencies**
+Install git (make sure to include adding to path!)
+Download at:
+```
+https://git-scm.com/
+```
 
 3. **Browse the prompts**
    All prompts live under the `prompts/` directory, organized by category.
@@ -96,17 +96,7 @@ https://github.com/cry0n1s1scodes/Prompt-Engineering/blob/main/Forking/Clone%20T
 ## Project Structure
 
 ```
-prompt-engineering/
-├── prompts/
-│   ├── creative-writing/
-│   │   └── story-starter.md
-│   ├── data-analysis/
-│   │   └── pandas-rollavg.md
-│   └── …  
-├── scripts/
-│   └── run_prompt.py         # example runner script
-├── README.md                 # this file
-└── LICENSE
+Unavailable Currently!
 ```
 
 ---
